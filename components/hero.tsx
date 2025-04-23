@@ -7,8 +7,8 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
-          alt="Auto body repair shop"
+          src="/images/hero-background.jpg"
+          alt="Auto body repair shop mechanic working on a vehicle"
           fill
           priority
           className="object-cover"
