@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -8,29 +10,29 @@ const galleryItems = [
   {
     id: 1,
     title: "Rear Bumper Repair",
-    before: "/public/images/gallery/gallery1before.jpg",
-    after: "/public/images/gallery/gallery1after.jpg",
+    before: "/images/gallery/gallery1before.jpg",
+    after: "/images/gallery/gallery1after.jpg",
     description: "Severe rear bumper damage from a parking lot collision completely restored to factory condition.",
   },
   {
     id: 2,
     title: "Door Dent Removal",
-    before: "/public/images/gallery/gallery2before.jpg",
-    after: "/public/images/gallery/gallery2after.jpg",
+    before: "/images/gallery/gallery2before.jpg",
+    after: "/images/gallery/gallery2after.jpg",
     description: "Deep door dent removed without the need for repainting, preserving the original finish.",
   },
   {
     id: 3,
     title: "Front End Collision",
-    before: "/public/images/gallery/gallery3before.jpg",
-    after: "/public/images/gallery/gallery3after.jpg",
+    before: "/images/gallery/gallery3before.jpg",
+    after: "/images/gallery/gallery3after.jpg",
     description: "Major front-end damage repaired with OEM parts and precise color matching.",
   },
   {
     id: 4,
     title: "Paint Restoration",
-    before: "/public/images/gallery/gallery4before.jpg",
-    after: "/public/images/gallery/gallery4after.jpg",
+    before: "/images/gallery/gallery4before.jpg",
+    after: "/images/gallery/gallery4after.jpg",
     description: "Faded and oxidized paint restored to a showroom shine with our multi-stage paint correction process.",
   },
 ]
@@ -105,6 +107,11 @@ export default function Gallery() {
     return ""
   }
 
+  // Function to handle image errors and provide fallback
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = "/placeholder.svg?height=600&width=800"
+  }
+
   return (
     <section id="gallery" className="bg-white">
       <div className="container-section">
@@ -122,6 +129,7 @@ export default function Gallery() {
                   alt={`${currentSlide.title} - Before`}
                   fill
                   className="object-cover rounded-lg"
+                  onError={handleImageError}
                 />
                 <div className="absolute bottom-0 left-0 bg-black bg-opacity-70 text-white px-4 py-2 rounded-bl-lg rounded-tr-lg">
                   Before
@@ -133,6 +141,7 @@ export default function Gallery() {
                   alt={`${currentSlide.title} - After`}
                   fill
                   className="object-cover rounded-lg"
+                  onError={handleImageError}
                 />
                 <div className="absolute bottom-0 left-0 bg-red-600 text-white px-4 py-2 rounded-bl-lg rounded-tr-lg">
                   After
