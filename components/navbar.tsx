@@ -18,6 +18,9 @@ export default function Navbar() {
       }
     }
 
+    // Set initial state
+    handleScroll()
+
     window.addEventListener("scroll", handleScroll)
     return () => {
       window.removeEventListener("scroll", handleScroll)
@@ -34,14 +37,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"}`}
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Logo />
-              <span className="text-xl font-oswald font-bold text-gray-900 ml-2">PREMIER AUTO BODY</span>
+              <span className={`text-xl font-oswald font-bold ml-2 ${scrolled ? "text-gray-900" : "text-white"}`}>
+                PREMIER AUTO BODY
+              </span>
             </Link>
           </div>
 
@@ -51,7 +58,9 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-900 hover:text-red-600 font-medium transition duration-300"
+                className={`font-medium transition duration-300 ${
+                  scrolled ? "text-gray-900 hover:text-red-600" : "text-white hover:text-red-300"
+                }`}
               >
                 {link.name}
               </Link>
@@ -67,7 +76,12 @@ export default function Navbar() {
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-900 hover:text-red-600 focus:outline-none">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`focus:outline-none ${
+                scrolled ? "text-gray-900 hover:text-red-600" : "text-white hover:text-red-300"
+              }`}
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
