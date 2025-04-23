@@ -8,8 +8,8 @@ const galleryItems = [
   {
     id: 1,
     title: "Rear Bumper Repair",
-    before: "/placeholder.svg?height=600&width=800",
-    after: "/placeholder.svg?height=600&width=800",
+    before: "/public/images/gallery/gallery1before.jpg?height=2048&width=2048",
+    after: "/public/images/gallery/gallery1after.jpg?height=2048&width=2048",
     description: "Severe rear bumper damage from a parking lot collision completely restored to factory condition.",
   },
   {
